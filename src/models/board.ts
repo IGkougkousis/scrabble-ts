@@ -1,13 +1,12 @@
 import { IBoard } from "../interfaces/board";
 import { Square } from "./square";
-import { Multiplier } from "../enums/multiplier";
 
 export class Board implements IBoard {
   public squares: Array<Square>;
 
   constructor() {
     this.initSquares();
-    //this.print();
+    this.print();
   }
 
   public getSquare(row: number, col: number): Square {
@@ -32,7 +31,7 @@ export class Board implements IBoard {
     for (let col = 0; col < 15; col++) {
       for (let row = 0; row < 15; row++) {
         let sq = this.getSquare(row, col);
-        text.push(sq.multiplier.toString() + "\t");
+        text.push(" " + sq.multiplier.toString() + " ");
       }
       text.push("\n");
     }

@@ -1,5 +1,5 @@
 export enum Multiplier {
-  Normal = "__",
+  Normal = "--",
   Letter2x = "2L",
   Letter3x = "3L",
   Word2x = "2W",

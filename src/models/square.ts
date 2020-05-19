@@ -1,7 +1,6 @@
 import { ISquare } from "../interfaces/square";
 import { Tile } from "./tile";
 import { Multiplier } from "../enums/multiplier";
-import { multiplierLocations as mlocs } from "../constants/multiplierlocations";
 
 export class Square implements ISquare {
   public readonly row: number;
@@ -17,13 +16,14 @@ export class Square implements ISquare {
   }
 
   private calcMultiplier(row: number, col: number): Multiplier {
-    const multipliers = [
-      Multiplier.Letter2x.toString(),
-      Multiplier.Letter3x.toString(),
-      Multiplier.Word2x.toString(),
-      Multiplier.Word3x.toString(),
-    ];
-    // TO BE CONTINUED
+    if (
+      ([0, 7, 14].includes(row) && col == 0) ||
+      ([0, 7, 14].includes(col) && row == 0) ||
+      ([0, 7, 14].includes(row) && col == 14) ||
+      ([0, 7, 14].includes(col) && row == 14)
+    )
+      return Multiplier.Word3x;
+
     return Multiplier.Normal;
   }
 }
