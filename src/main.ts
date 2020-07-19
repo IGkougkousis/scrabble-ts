@@ -1,3 +1,1 @@
-import { ScrabbleGame } from "./models/scrabblegame";
-
-module.exports = ScrabbleGame;
+console.log("it is running");
