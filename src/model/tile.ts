@@ -1,14 +1,17 @@
 export class Tile {
-  public score: number;
-  public letter: string;
+  public readonly score: number;
+  public readonly letter: string;
 
-  constructor({ score, letter }: ConstructorArguments = {}) {
-    this.score = score || -1;
-    this.letter = letter || "?";
+  constructor({ score, letter }: TileOptions) {
+    if (score < 0 || score > 10)
+      throw "Score must be between 0 and 10 (inclusive)";
+
+    this.score = score;
+    this.letter = letter;
   }
 }
 
-interface ConstructorArguments {
-  score?: number;
-  letter?: string;
+export interface TileOptions {
+  score: number;
+  letter: string;
 }
