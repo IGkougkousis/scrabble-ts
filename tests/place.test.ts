@@ -25,4 +25,26 @@ describe("Place", function () {
       let place = new Place({ x: 8, y: 15 });
     }).toThrow();
   });
+
+  it("should have a letter multiplier", function () {
+    let place = new Place({ x: 0, y: 0 });
+    expect(place.letterMultiplier).not.toBeNull();
+  });
+
+  it("should have a word multiplier", function () {
+    let place = new Place({ x: 0, y: 0 });
+    expect(place.wordMultiplier).not.toBeNull();
+  });
+
+  it("'s letter multiplier must be 1, 2 or 3", function () {
+    let place = new Place({ x: 0, y: 0 });
+    expect(place.letterMultiplier).toBeGreaterThanOrEqual(1);
+    expect(place.letterMultiplier).toBeLessThanOrEqual(3);
+  });
+
+  it("'s word multiplier must be 1, 2 or 3", function () {
+    let place = new Place({ x: 0, y: 0 });
+    expect(place.wordMultiplier).toBeGreaterThanOrEqual(1);
+    expect(place.wordMultiplier).toBeLessThanOrEqual(3);
+  });
 });
