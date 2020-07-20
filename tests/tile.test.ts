@@ -1,14 +1,14 @@
 import { Tile, TileOptions } from "../src/model/tile";
 
 describe("Tile", function () {
-  it("must correctly assign constructor parameters to class properties", function () {
+  it("should correctly assign constructor parameters to class properties", function () {
     const options: TileOptions = { score: 10, letter: "A" };
     const tile = new Tile(options);
     expect(tile.score).toBe(options.score);
     expect(tile.letter).toBe(options.letter);
   });
 
-  it("must throw error if score isn't between 0 and 10 (inclusive)", function () {
+  it("should throw error if score isn't between 0 and 10 (inclusive)", function () {
     expect(function () {
       const options: TileOptions = { score: 8, letter: "B" };
       const tile = new Tile(options);

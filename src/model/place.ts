@@ -1,8 +1,12 @@
+import { Tile } from "./tile";
+
 export class Place {
   public readonly x: number;
   public readonly y: number;
   public readonly letterMultiplier: number;
   public readonly wordMultiplier: number;
+
+  private tile: Tile | null;
 
   constructor({ x, y }: PlaceOptions) {
     if (this.coordinateOutOfBounds(x)) throw "x should be in [0,14]";
@@ -12,6 +16,18 @@ export class Place {
     this.y = y;
     this.letterMultiplier = this.getLetterMultiplier(x, y);
     this.wordMultiplier = this.getWordMultiplier(x, y);
+    this.tile = null;
+  }
+
+  public setTile(tile: Tile): void {
+    if (this.tile != null)
+      throw "Cannot set new tile; place already has a tile";
+
+    this.tile = tile;
+  }
+
+  public getTile(): Tile | null {
+    return this.tile;
   }
 
   private coordinateOutOfBounds(num: number): boolean {
